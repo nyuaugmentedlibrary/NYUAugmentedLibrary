@@ -1,3 +1,8 @@
+How Members Should Use:
+- members should only use the master account to add themselves as contributors
+- members should use their own accounts to push/pull/edit
+
+
 backend:
 10/14
 
