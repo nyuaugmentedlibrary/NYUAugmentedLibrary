@@ -24,14 +24,45 @@ def RoomAPI(request, id=0):
     elif request.method == "PUT":
         room_data = JSONParser().parse(request)
         room = Room_Features.objects.get(room_id=room_data['room_id'])
-        room_serializer = room_serializer(room, data=room_data)
+        room_serializer = RoomSerializer(room, data=room_data)
         if room_serializer.is_valid():
             room_serializer.save()
             return JsonResponse("Update Success", safe = False)
         return JsonResponse("Update Failed")
     elif request.method == 'DELETE':
-        room == Room_Features.objects.get(room_id = id)
+        if not id:
+            return JsonResponse("Please Provide a valid ID", safe = False)
+        room = Room_Features.objects.get(room_id = id)
         room.delete()
+        return JsonResponse("Delete Success", safe = False)
+
+# API methods for Reservation table 
+@csrf_exempt
+def ReservationAPI(request, id=0):
+    if request.method == 'GET':
+        reservation = Reservations.objects.all()
+        reservation_serializer = ReservationSerializer(reservation, many = True)
+        return JsonResponse(reservation_serializer.data, safe = False)
+    elif request.method == 'POST':
+        reservation_data = JSONParser().parse(request)
+        reservation_serializer = ReservationSerializer(data = reservation_data)
+        if reservation_serializer.is_valid():
+            reservation_serializer.save()
+            return JsonResponse("Added Successfully", safe = False)
+        return JsonResponse("Attempt to add failed", safe = False)
+    elif request.method == "PUT":
+        reservation_data = JSONParser().parse(request)
+        reservation = Reservations.objects.get(res_id=reservation_data['room_id'])
+        reservation_serializer = ReservationSerializer(reservation, data=reservation_data)
+        if reservation_serializer.is_valid():
+            reservation_serializer.save()
+            return JsonResponse("Update Success", safe = False)
+        return JsonResponse("Update Failed")
+    elif request.method == 'DELETE':
+        if not id:
+            return JsonResponse("Please Provide a valid ID", safe = False)
+        reservation = Reservations.objects.get(res_id = id)
+        reservation.delete()
         return JsonResponse("Delete Success", safe = False)
 
 

@@ -1,7 +1,11 @@
-# Help to convert model instances into native python types
-# Which can then be rendered into json
 from rest_framework import serializers
 from room_api.models import Room_Features, Reservations
+
+"""
+Help to convert model instances into native python types and vice versa
+Which can then be rendered into json
+Implemented by API methods
+"""
 
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
