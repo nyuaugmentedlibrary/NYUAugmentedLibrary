@@ -5,6 +5,8 @@ from room_api import views
 urlpatterns = [
     # declare url route to call Room_Feature table's API methods
     re_path(r'^room$', views.RoomAPI),
-    re_path(r'^room/([0-9]+)$',views.RoomAPI)
-    
+    re_path(r'^room/([0-9]+)$',views.RoomAPI),
+
+    re_path(r'^reservation$', views.ReservationAPI),
+    re_path(r'^reservation/([0-9]+)$',views.ReservationAPI)
 ]
