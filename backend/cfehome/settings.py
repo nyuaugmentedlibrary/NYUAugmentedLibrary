@@ -81,14 +81,14 @@ WSGI_APPLICATION = 'cfehome.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testDB',
-        'USER': 'postgres',
-        'PASSWORD': 'Ouyang0328',
-        'HOST': 'database-2.cok6eq7jasfe.us-east-1.rds.amazonaws.com',
-        'PORT': '5432'
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'testDB',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'Ouyang0328',
+    #     'HOST': 'database-2.cok6eq7jasfe.us-east-1.rds.amazonaws.com',
+    #     'PORT': '5432'
+    # }
 }
 
 
