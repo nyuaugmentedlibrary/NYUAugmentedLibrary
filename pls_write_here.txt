@@ -13,3 +13,7 @@ Mariam -
 	
 Brandon -
 	Hi everyone, im Brandon and my favorite thing to do is workout.
+
+Kelly -
+    Hi, I'm Kelly. I can't believe I did not use GitHub Desktop 
+    earlier. It is so much easier than using the cmd prompt. 
