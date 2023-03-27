@@ -17,3 +17,6 @@ Brandon -
 Kelly -
     Hi, I'm Kelly. I can't believe I did not use GitHub Desktop 
     earlier. It is so much easier than using the cmd prompt. 
+
+Shahria - 
+	Hi, I'm Shahria and I like watching action movies.
