@@ -1,0 +1,65 @@
+version: '3.9'
+
+
+services:
+  db:
+    image: postgres:14-alpine
+    ports:
+      - '5432:5432'
+
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
+
+  frontend:
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - ./frontend:/app/frontend
+
+    depends_on:
+      - backend
+
+
+  backend:
+
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+
+    ports:
+      - '8000:8000'
+
+    volumes:
+      - ./backend:/app/backend
+
+    depends_on:
+      - db
+
+
+
+
+
+
+
+#We start by mentioning the version of docker-compose.
+#And create three services: Database (db), Frontend React (frontend), Backend Django (backend)
+#For db we point it to the official postgres image, set environment variables, set volumes, and expose ports 5432:5432
+#Also for frontend and backend we provide the build context i.e. the dockerfile to use for building the image expose ports 8000:8000 for backend and 3000:3000 for frontend.
+#Set volumes to map ./frontend and ./backend inside the container.
+#The depends_on property will ensure that the db is running before starting the backend and backend is running before starting the frontend.
